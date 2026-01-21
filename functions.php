@@ -33,6 +33,18 @@ add_action( 'wp_enqueue_scripts', function () {
 	}
 }, 20 );   // priority 20 ⇒ runs after HivePress enqueues
 
+// Add inline styles to hide .hp-modal on blank page template
+add_action( 'wp_head', function () {
+	if ( is_page_template( 'page-blank.php' ) ) {
+		echo '<style>
+			body.page-template-page-blank .hp-modal,
+			body.page-template-page-blank-php .hp-modal {
+				display: none !important;
+			}
+		</style>';
+	}
+} );
+
 add_action( 'after_setup_theme', function () {
 	// HivePress removes this; we add it back so the Template dropdown shows.
 	add_post_type_support( 'page', 'page-attributes' );  //  ← requirement ② :contentReference[oaicite:2]{index=2}

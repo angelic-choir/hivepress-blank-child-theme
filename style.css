@@ -3,5 +3,11 @@ Theme Name: HivePress Child - Blank Page
 Description: Blank-canvas child theme for HivePress.
 Author:      Fresco Software
 Template:    meetinghive
-Version:     1.3
+Version:     1.3.1
 */
+
+/* Hide .hp-modal only on the blank page template */
+body.page-template-page-blank .hp-modal,
+body.page-template-page-blank-php .hp-modal {
+	display: none !important;
+}
