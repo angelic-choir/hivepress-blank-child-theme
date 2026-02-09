@@ -3,7 +3,7 @@ Theme Name: HivePress Child - Blank Page
 Description: Blank-canvas child theme for HivePress.
 Author:      Fresco Software
 Template:    meetinghive
-Version:     1.3.4
+Version:     1.3.5
 */
 
 /* Hide .hp-modal only on the blank page template */
@@ -14,8 +14,7 @@ body.page-template-page-blank-php .hp-modal {
 
 /*
  * Full-height chain for TrainerFly app (blank template).
- * When the mobile keyboard opens, the wrapper follows 100dvh so the UI
- * stays within the visible area and the page does not scroll.
+ * Height is driven by JS (visual viewport) when keyboard opens; CSS sets initial state.
  */
 html:has(body.app-blank),
 body.app-blank {
@@ -24,7 +23,12 @@ body.app-blank {
 	margin: 0;
 }
 
+/* Anchored to top so when height shrinks (keyboard), only the bottom moves up; header stays fixed */
 body.app-blank .trainerfly-app-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 100dvh;
 	min-height: 100dvh;
 	width: 100%;
